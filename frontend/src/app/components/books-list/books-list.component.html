@@ -1,0 +1,45 @@
+<div class="container mat-elevation-z4">
+  <h3 *ngIf="(books$ | async) as books">
+      <table>
+        <tr>
+          <th>ID </th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Book </th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Year </th>
+          <th>Added</th>
+          <th>CheckOutCount</th>
+          <th>Status </th>
+          <th>DueDate</th>
+          <th>Comment</th>
+        </tr>
+      
+        <tr *ngFor="let book of books.content"(click)=" individualBook(book.id)" [routerLink]="['/books', book.id]">
+          
+            
+              <td>{{book.id}}</td>
+              <td>{{book.title}}</td>
+              <td>{{book.author}}</td>
+              <td>{{book.genre}}</td>
+              <td>{{book.year}}</td>
+              <td>{{book.added}}</td>
+              <td>{{book.checkOutCount}}</td>
+              <td>{{book.status}}</td>
+              <td>{{book.dueDate}}</td>
+              <td>{{book.comment}}</td>
+        
+            </tr>
+
+     
+          
+       
+    </table>
+  </h3>
+
+    <div class="pagination">
+      <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [pageIndex]="currentPageIndex" (page)="onPageChange($event)"></mat-paginator>
+    </div>
+</div>
+
